@@ -1,5 +1,6 @@
 import express from "express";
 import urlRoutes from "./routes/url.routes.js";
+import { redirectToOriginalUrl } from "./controllers/url.controller.js";
 
 const app = express();
 
@@ -13,5 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/urls", urlRoutes);
+app.get("/:shortCode", redirectToOriginalUrl);
+
 
 export default app;

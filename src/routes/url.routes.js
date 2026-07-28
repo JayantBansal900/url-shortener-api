@@ -1,5 +1,8 @@
 import express from "express";
-import { createShortUrl } from "../controllers/url.controller.js";
+import {
+  createShortUrl,
+  redirectToOriginalUrl,
+} from "../controllers/url.controller.js";
 
 const router = express.Router();
 

@@ -129,7 +129,13 @@ cd url-shortener-api
 npm install
 ```
 
-Create a `.env` file in the project root:
+Copy the example environment file and fill in your own values:
+
+```bash
+cp .env.example .env
+```
+
+It contains:
 
 ```env
 MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>/url-shortener

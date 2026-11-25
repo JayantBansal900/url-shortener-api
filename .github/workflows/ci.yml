@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: ./package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: find . -name '*.js' -not -path './node_modules/*' -print0 | xargs -0 -n1 node --check
+      - run: node -e "import('./src/app.js').then(() => console.log('Express app loads OK'))"

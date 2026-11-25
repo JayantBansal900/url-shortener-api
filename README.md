@@ -1,4 +1,5 @@
 # URL Shortener API
+[![CI](https://github.com/JayantBansal900/url-shortener-api/actions/workflows/ci.yml/badge.svg)](https://github.com/JayantBansal900/url-shortener-api/actions/workflows/ci.yml)
 
 A REST API that turns long URLs into short 6-character links, redirects visitors to the original address, and counts every click.
 
